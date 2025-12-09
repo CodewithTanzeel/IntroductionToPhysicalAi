@@ -1,3 +1,11 @@
+---
+title: "Introduction to Physical AI"
+description: "Overview and roadmap for the Introduction to Physical AI documentation: sensors, actuators, perception, control, and systems integration."
+sidebar_position: 1
+tags: [introduction, overview]
+---
+
+
 # Introduction to Physical AI
 
 Welcome to **Introduction to Physical AI** - your comprehensive guide to understanding how artificial intelligence interacts with the physical world through sensors, actuators, and intelligent systems.
@@ -49,7 +57,7 @@ This documentation covers the fundamental building blocks of Physical AI:
 
 Ready to dive in? Here's your learning path:
 
-1. **Fundamentals**: Start with [Sensors](/docs/sensors/intro) to understand how robots perceive the world
+1. **Fundamentals**: Start with [Sensors](/docs/docs/intro.md) to understand how robots perceive the world
 2. **Actuation**: Learn about [Actuators](/docs/actuators/intro) and how to control movement
 3. **Perception**: Explore [Computer Vision](/docs/computer-vision/intro) for visual understanding
 4. **Control**: Master [Control Systems](/docs/control-systems/intro) for precise manipulation
@@ -79,4 +87,4 @@ Don't worry if you're missing some prerequisites - we'll explain concepts as we 
 
 Physical AI is an exciting field where software meets the physical world. Whether you're building autonomous robots, smart sensors, or intelligent control systems, this documentation will provide the knowledge you need.
 
-Start your journey by exploring the **[Sensors](/docs/sensors/intro)** section, or use the AI assistant to ask specific questions!
+Start your journey by exploring the **[Sensors](/sensors/intro)** section, or use the AI assistant to ask specific questions!

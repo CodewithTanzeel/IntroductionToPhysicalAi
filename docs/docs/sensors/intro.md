@@ -1,5 +1,8 @@
 ---
+title: "Introduction to Sensors"
+description: "Sensors used in Physical AI systems: vision, range, inertial, tactile, and environmental sensors — characteristics and use cases."
 sidebar_position: 1
+tags: [sensors, perception]
 ---
 
 # Introduction to Sensors
@@ -170,9 +173,9 @@ Each sensor provides unique information, and AI algorithms fuse this data to cre
 
 Now that you understand sensors, explore specific sensor types:
 
-- [Camera Systems](./cameras) - Vision-based perception
-- [LIDAR Technology](./lidar) - 3D environment mapping
-- [IMU & Orientation](./imu) - Motion and orientation sensing
-- [Sensor Fusion Techniques](./fusion) - Combining multiple sensors
+- [Camera Systems](./cameras.md) - Vision-based perception
+- [LIDAR Technology](./lidar.md) - 3D environment mapping
+- [IMU & Orientation](./imu.md) - Motion and orientation sensing
+- [Sensor Fusion Techniques](./fusion.md) - Combining multiple sensors
 
 Ready to learn about how robots take action? Continue to **[Actuators](/docs/actuators/intro)**.

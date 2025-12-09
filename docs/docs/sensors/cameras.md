@@ -1,8 +1,8 @@
 ---
+title: "Camera Systems"
+description: "Types of camera sensors (RGB, stereo, depth, event cameras), calibration tips, and practical considerations for robotics." 
 sidebar_position: 2
----
-
-
+tags: [sensors, cameras, vision]
 ---
 
 # Camera Systems
@@ -55,32 +55,31 @@ A minimal RGB processing pipeline in robotics:
 4. Run perception algorithms (feature extraction, neural networks, etc.).[web:12]
 
 **Example (Python + OpenCV, pseudo‑ROS):**
-
+```python
 import cv2
 
-Open camera device
+# Open camera device
 cap = cv2.VideoCapture(0)
 
 while True:
-ok, frame = cap.read()
-if not ok:
-break
-
-text
-# Resize and convert to grayscale
-gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-small = cv2.resize(gray, (640, 360))
-
-# Simple edge detection
-edges = cv2.Canny(small, 50, 150)
-
-cv2.imshow("edges", edges)
-if cv2.waitKey(1) == 27:
+  ok, frame = cap.read()
+  if not ok:
     break
+
+  # Resize and convert to grayscale
+  gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+  small = cv2.resize(gray, (640, 360))
+
+  # Simple edge detection
+  edges = cv2.Canny(small, 50, 150)
+
+  cv2.imshow("edges", edges)
+  if cv2.waitKey(1) == 27:
+    break
+
 cap.release()
 cv2.destroyAllWindows()
-
-text
+```
 
 ---
 
@@ -133,25 +132,24 @@ Depth cameras directly output per‑pixel distance values, often along with an a
 - Many libraries convert depth to point clouds in the robot frame for planning and mapping.[web:25][web:37]
 
 **Example (Python + Open3D, reading a saved depth image):**
-
+```python
 import open3d as o3d
 import numpy as np
 
-depth = o3d.io.read_image("depth.png") # 16-bit depth
+depth = o3d.io.read_image("depth.png")  # 16-bit depth
 rgb = o3d.io.read_image("color.png")
 
 rgbd = o3d.geometry.RGBDImage.create_from_color_and_depth(
-rgb, depth, depth_scale=1000.0, depth_trunc=5.0, convert_rgb_to_intensity=False
+  rgb, depth, depth_scale=1000.0, depth_trunc=5.0, convert_rgb_to_intensity=False
 )
 
 intrinsics = o3d.camera.PinholeCameraIntrinsic(
-640, 480, fx=525, fy=525, cx=319.5, cy=239.5
+  640, 480, fx=525, fy=525, cx=319.5, cy=239.5
 )
 
 pcd = o3d.geometry.PointCloud.create_from_rgbd_image(rgbd, intrinsics)
 o3d.visualization.draw_geometries([pcd])
-
-text
+```
 
 ---
 
