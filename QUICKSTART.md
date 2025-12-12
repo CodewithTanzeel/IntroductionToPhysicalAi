@@ -10,10 +10,12 @@ This guide will get you up and running in **5 minutes**!
 
 ## Step-by-Step Setup
 
+
 ### 1️⃣ Install Dependencies
 
 ```bash
 # Install Docusaurus dependencies
+
 cd docs
 npm install
 

@@ -59,7 +59,6 @@ Stereo vision uses **two (or more) synchronized cameras** with a known baseline 
 ### Typical Pipeline (Stereo)
 
 Stereo Images → Rectification → Disparity Map → Depth Map → Point Cloud
-
 Stereo is widely used in:
 
 - Mobile robots and drones for obstacle detection.  
