@@ -193,7 +193,9 @@ Control Node (velocity / joint targets)
 ↓
 Actuators (motors, joints)
 
-text
+```text
+  (feedback loop continues here)
+```
 
 ---
 

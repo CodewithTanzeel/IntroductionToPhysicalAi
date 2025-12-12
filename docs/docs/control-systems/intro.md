@@ -18,28 +18,28 @@ A **control system** continuously measures the state of a robot, compares it to 
 
 Typical closed-loop structure:
 
-text
+```text
    +-----------------+
    | Desired Command |  (reference: position, speed, pose)
    +--------+--------+
-            |
-            v
-      +-----+------+
-      |  Controller |  (PID, MPC, etc.)
-      +-----+------+
-            |
+    |
+    v
+  +-----+------+ 
+  |  Controller |  (PID, MPC, etc.)
+  +-----+------+ 
+    |
     Actuator Commands
-            v
-       +----+----+
-       |  Robot  |
-       +----+----+
-            |
-       Sensors / State
-            v
-      +-----+------+
-      |  Feedback  |
-      +------------+
-text
+    v
+   +----+----+
+   |  Robot  |
+   +----+----+
+    |
+   Sensors / State
+    v
+  +-----+------+ 
+  |  Feedback  |
+  +------------+
+```
 
 Key ideas:
 
@@ -199,6 +199,7 @@ Planner → Trajectory Generator → Tracking Controller → Robot
 
 text
 
+
 For example, a mobile base might:
 
 - Plan a path around obstacles.  
@@ -209,22 +210,22 @@ For example, a mobile base might:
 
 ## Example: Control Stack in a Differential-Drive Robot
 
+```text
 ┌────────────────────────────────────────────┐
-│ Differential-Drive Robot │
+│ Differential-Drive Robot                    │
 ├────────────────────────────────────────────┤
-│ High-Level: Path Planner │
-│ - Generates waypoints / trajectories │
-│ │
-│ Mid-Level: Trajectory Tracking Controller │
-│ - PID or MPC on linear & angular speed │
-│ - Uses estimated pose from state est. │
-│ │
-│ Low-Level: Motor Controllers │
-│ - Wheel speed PID loops │
-│ - Encoder feedback │
+│ High-Level: Path Planner                    │
+│ - Generates waypoints / trajectories        │
+│                                            │
+│ Mid-Level: Trajectory Tracking Controller   │
+│ - PID or MPC on linear & angular speed     │
+│ - Uses estimated pose from state est.      │
+│                                            │
+│ Low-Level: Motor Controllers                │
+│ - Wheel speed PID loops                     │
+│ - Encoder feedback                          │
 └────────────────────────────────────────────┘
-
-text
+```
 
 Each layer uses control concepts at a different abstraction level, from individual wheel speed to global path following.
 
