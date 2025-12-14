@@ -1,8 +1,5 @@
 ---
-title: "Introduction to Sensors"
-description: "Sensors used in Physical AI systems: vision, range, inertial, tactile, and environmental sensors — characteristics and use cases."
-sidebar_position: 1
-tags: [sensors, perception]
+sidebar_position: 4
 ---
 
 # Introduction to Sensors

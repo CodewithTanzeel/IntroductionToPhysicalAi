@@ -1,10 +1,6 @@
 ---
-title: "Transmissions"
-description: "Overview of gear trains, belts, harmonic drives, and practical trade-offs for robotics transmissions."
 sidebar_position: 5
-tags: [actuators, transmissions]
 ---
-
 
 ---
 

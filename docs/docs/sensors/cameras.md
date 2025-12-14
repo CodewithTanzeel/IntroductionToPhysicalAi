@@ -1,8 +1,5 @@
 ---
-title: "Camera Systems"
-description: "Types of camera sensors (RGB, stereo, depth, event cameras), calibration tips, and practical considerations for robotics." 
-sidebar_position: 2
-tags: [sensors, cameras, vision]
+sidebar_position: 1
 ---
 
 # Camera Systems
