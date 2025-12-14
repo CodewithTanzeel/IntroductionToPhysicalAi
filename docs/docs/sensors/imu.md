@@ -109,14 +109,14 @@ For roll/pitch:
 Simple 1D update (e.g. roll angle):
 
 $$
-\theta_{\text{gyro}}(k) = \theta(k-1) + \omega(k)\Delta t
+\theta_{\textrm{gyro}}(k) = \theta(k-1) + \omega(k)\Delta t
 $$
 
 $$
-\theta(k) = \alpha\,\theta_{\text{gyro}}(k) + (1-\alpha)\,\theta_{\text{acc}}(k)
+\theta(k) = \alpha\,\theta_{\textrm{gyro}}(k) + (1-\alpha)\,\theta_{\textrm{acc}}(k)
 $$
 
-where \(\theta_{\text{acc}}\) is computed from accelerometer readings.[web:63][web:67]
+where \(\theta_{\textrm{acc}}\) is computed from accelerometer readings.[web:63][web:67]
 
 ### 7.2 Example (Python‑style pseudocode)
 

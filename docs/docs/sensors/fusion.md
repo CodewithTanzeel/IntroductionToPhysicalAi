@@ -52,14 +52,14 @@ A basic complementary filter for roll/pitch blends them:
 For a 1D angle $\theta$:
 
 $$
-\theta_{\text{gyro}}(k) = \theta(k-1) + \omega(k)\Delta t
+\theta_{\textrm{gyro}}(k) = \theta(k-1) + \omega(k)\Delta t
 $$
 
 $$
-\theta(k) = \alpha\,(\theta_{\text{gyro}}(k)) + (1-\alpha)\,\theta_{\text{acc}}(k)
+\theta(k) = \alpha\,(\theta_{\textrm{gyro}}(k)) + (1-\alpha)\,\theta_{\textrm{acc}}(k)
 $$
 
-where \(\omega\) is gyro rate, \(\theta_{\text{acc}}\) is angle from accelerometer, and \(\alpha \in [0,1]\) is a tuning parameter.[web:49][web:57]
+where \(\omega\) is gyro rate, \(\theta_{\textrm{acc}}\) is angle from accelerometer, and \(\alpha \in [0,1]\) is a tuning parameter.[web:49][web:57]
 
 - Larger \(\alpha\): trust gyro more (faster response, more drift).  
 - Smaller \(\alpha\): trust accelerometer more (more stable, more noise and lag).[web:46][web:49]
