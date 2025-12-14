@@ -1,6 +1,7 @@
 ---
-sidebar_position: 4
+title: Computer Vision
 ---
+
 
 # Introduction to Computer Vision
 

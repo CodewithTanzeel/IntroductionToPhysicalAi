@@ -1,6 +1,7 @@
 ---
-sidebar_position: 3
+title: DeepLearning
 ---
+
 
 # Deep Learning for Computer Vision
 

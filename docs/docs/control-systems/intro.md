@@ -1,7 +1,6 @@
 ---
-sidebar_position: 1
+title: Control Systems
 ---
-
 
 # Introduction to Control Systems
 

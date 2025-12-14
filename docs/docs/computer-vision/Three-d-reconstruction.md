@@ -1,6 +1,7 @@
 ---
-sidebar_position: 1
+title: Three-D Reconstruction
 ---
+
 
 # Introduction to 3D Reconstruction
 
@@ -49,11 +50,7 @@ Stereo vision uses **two (or more) synchronized cameras** with a known baseline 
    - Compute disparity = horizontal shift between matches.
 
 3. **Depth Computation**  
-   - Depth is inversely proportional to disparity:
-     \[
-     Z = \frac{f \cdot B}{d}
-     \]
-     where \(f\) is focal length, \(B\) is baseline, and \(d\) is disparity.
+  - Depth is inversely proportional to disparity: `Z = (f * B) / d`, where `f` is focal length, `B` is baseline, and `d` is disparity.
 
 ### Typical Pipeline (Stereo)
 
@@ -129,7 +126,7 @@ Point clouds are a core representation in 3D reconstruction and robotics.
 
 A **point cloud** is a set of 3D points, each with optional attributes:
 
-- Position \((x, y, z)\).  
+- Position (x, y, z).  
 - Color or intensity.  
 - Normals or labels (after processing).
 
@@ -187,8 +184,7 @@ Fusion → Dense Point Cloud
 ↓
 Surface Reconstruction → Mesh / Textured Model
 
-text
-
+---
 ---
 
 ## Practical Considerations

@@ -1,7 +1,5 @@
 ---
-sidebar_position: 5
----
-
+title: Transmissions
 ---
 
 ## Gear Transmissions

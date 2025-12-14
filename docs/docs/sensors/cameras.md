@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+title: Cameras
 ---
 
 # Camera Systems
@@ -217,11 +217,12 @@ Calibration recovers the relationship between image pixels and 3D rays so your m
 
 **Example (OpenCV chessboard calibration skeleton):**
 
+```python
 import cv2
 import numpy as np
 import glob
 
-Prepare object points for a 9x6 chessboard with 0.025 m square size
+# Prepare object points for a 9x6 chessboard with 0.025 m square size
 objp = np.zeros((9*6, 3), np.float32)
 objp[:, :2] = np.mgrid[0:9, 0:6].T.reshape(-1, 2) * 0.025
 

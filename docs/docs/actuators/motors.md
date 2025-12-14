@@ -1,10 +1,7 @@
 ---
-sidebar_position: 3
+title: Motors
 ---
 
----
-sidebar_position: 6
----
 
 # Motors
 

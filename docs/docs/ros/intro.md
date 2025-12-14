@@ -1,6 +1,7 @@
 ---
-sidebar_position: 1
+title: ROS (Robot Operating System)
 ---
+
 
 # Introduction to ROS (Robot Operating System)
 

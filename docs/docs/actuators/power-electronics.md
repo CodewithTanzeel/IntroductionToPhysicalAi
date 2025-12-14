@@ -1,10 +1,7 @@
 ---
-sidebar_position: 4
+title: Power Electronics
 ---
 
----
-sidebar_position: 7
----
 
 # Power Electronics
 

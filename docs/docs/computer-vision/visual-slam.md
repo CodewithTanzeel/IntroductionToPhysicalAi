@@ -1,10 +1,7 @@
 ---
-sidebar_position: 5
+title: Visual SLAM
 ---
 
----
-sidebar_position: 4
----
 
 # Visual SLAM
 

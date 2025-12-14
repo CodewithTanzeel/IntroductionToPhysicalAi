@@ -1,6 +1,7 @@
 ---
-sidebar_position: 3
+title: IMU
 ---
+
 
 # IMU & Orientation
 
@@ -103,17 +104,17 @@ For roll/pitch:
 
 - Integrate gyro rates to get fast, smooth orientation estimate.  
 - Compute orientation from accelerometer (gravity direction) and low‑pass filter it.  
-- Combine both using a weight \(\alpha\) (0–1).[web:63][web:67]
+- Combine both using a weight $\alpha$ (0–1).[web:63][web:67]
 
 Simple 1D update (e.g. roll angle):
 
-\[
+$$
 \theta_{\text{gyro}}(k) = \theta(k-1) + \omega(k)\Delta t
-\]
+$$
 
-\[
+$$
 \theta(k) = \alpha\,\theta_{\text{gyro}}(k) + (1-\alpha)\,\theta_{\text{acc}}(k)
-\]
+$$
 
 where \(\theta_{\text{acc}}\) is computed from accelerometer readings.[web:63][web:67]
 
@@ -180,49 +181,35 @@ Orientation filters like `ahrsfilter` (Matlab) implement this logic efficiently,
 
 High‑level pseudocode for a quaternion + gyro bias EKF:[web:70][web:73]
 
+```python
 state = init_quaternion_and_bias()
 P = init_covariance()
 
 while True:
-ax, ay, az = read_accel()
-mx, my, mz = read_mag()
-gx, gy, gz = read_gyro()
-dt = get_dt()
+  ax, ay, az = read_accel()
+  mx, my, mz = read_mag()
+  gx, gy, gz = read_gyro()
+  dt = get_dt()
 
-text
-# --------- Prediction (gyro) ----------
-omega = np.array([gx, gy, gz]) - state.bias
-q_pred = integrate_quaternion(state.q, omega, dt)  # normalize inside
-F = compute_F_jacobian(state, omega, dt)           # process Jacobian
-P = F @ P @ F.T + Q
+  # --------- Prediction (gyro) ----------
+  omega = np.array([gx, gy, gz]) - state.bias
+  q_pred = integrate_quaternion(state.q, omega, dt)  # normalize inside
+  F = compute_F_jacobian(state, omega, dt)           # process Jacobian
+  P = F @ P @ F.T + Q
 
-# --------- Measurement update ----------
-z = np.hstack([normalize([ax, ay, az]),
-               normalize([mx, my, mz])])
+  # --------- Measurement update ----------
+  z = np.hstack([normalize([ax, ay, az]),
+           normalize([mx, my, mz])])
 
-z_hat, H = predict_accel_mag_measurement(q_pred)   # expected gravity & mag
-y = z - z_hat                                      # innovation
-S = H @ P @ H.T + R
-K = P @ H.T @ np.linalg.inv(S)
+  z_hat, H = predict_accel_mag_measurement(q_pred)   # expected gravity & mag
+  y = z - z_hat                                      # innovation
+  S = H @ P @ H.T + R
+  K = P @ H.T @ np.linalg.inv(S)
 
-x_update = K @ y
-state.q   = apply_quaternion_correction(q_pred, x_update)
-state.bias += extract_bias_correction(x_update)
-P = (np.eye(len(P)) - K @ H) @ P
-
-```python
-z = np.hstack([normalize([ax, ay, az]),
-               normalize([mx, my, mz])])
-
-z_hat, H = predict_accel_mag_measurement(q_pred)   # expected gravity & mag
-y = z - z_hat                                      # innovation
-S = H @ P @ H.T + R
-K = P @ H.T @ np.linalg.inv(S)
-
-x_update = K @ y
-state.q   = apply_quaternion_correction(q_pred, x_update)
-state.bias += extract_bias_correction(x_update)
-P = (np.eye(len(P)) - K @ H) @ P
+  x_update = K @ y
+  state.q   = apply_quaternion_correction(q_pred, x_update)
+  state.bias += extract_bias_correction(x_update)
+  P = (np.eye(len(P)) - K @ H) @ P
 ```
 
 This sketch omits many details (normalization, gating, frame conventions) but shows how gyro, accelerometer, and magnetometer interact in a Kalman‑style orientation estimator.[web:64][web:73]

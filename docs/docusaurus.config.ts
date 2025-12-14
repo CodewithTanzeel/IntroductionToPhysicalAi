@@ -41,8 +41,9 @@ const config: Config = {
       'classic',
       {
         docs: {
-          path: 'empty_docs',
-          sidebarPath: false,
+          sidebarPath: './sidebars.ts',
+          editUrl:
+            'https://github.com/CodewithTanzeel/IntroductionToPhysicalAi/tree/main/docs/',
         },
         blog: false,
         theme: {
@@ -66,6 +67,12 @@ const config: Config = {
       },
       items: [
         {
+          type: 'docSidebar',
+          sidebarId: 'tutorialSidebar',
+          position: 'left',
+          label: 'Documentation',
+        },
+        {
           href: 'https://github.com/CodewithTanzeel/IntroductionToPhysicalAi',
           label: 'GitHub',
           position: 'right',
@@ -77,7 +84,12 @@ const config: Config = {
       links: [
         {
           title: 'Docs',
-            items: [],
+          items: [
+            {
+              label: 'Documentation',
+              to: '/docs/intro',
+            },
+          ],
         },
         {
           title: 'Community',

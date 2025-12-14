@@ -15,7 +15,7 @@ interface Message {
 
 const API_URL = process.env.REACT_APP_RAG_API_URL || 'http://localhost:3001';
 
-export default function ChatWidget(): JSX.Element {
+export default function ChatWidget(): React.JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {

@@ -1,6 +1,7 @@
 ---
-sidebar_position: 2
+title: Sensor Fusion
 ---
+
 
 # Sensor Fusion
 
@@ -48,15 +49,15 @@ A basic complementary filter for roll/pitch blends them:
 
 ### 3.2 Simple discrete‑time form
 
-For a 1D angle \(\theta\):
+For a 1D angle $\theta$:
 
-\[
+$$
 \theta_{\text{gyro}}(k) = \theta(k-1) + \omega(k)\Delta t
-\]
+$$
 
-\[
+$$
 \theta(k) = \alpha\,(\theta_{\text{gyro}}(k)) + (1-\alpha)\,\theta_{\text{acc}}(k)
-\]
+$$
 
 where \(\omega\) is gyro rate, \(\theta_{\text{acc}}\) is angle from accelerometer, and \(\alpha \in [0,1]\) is a tuning parameter.[web:49][web:57]
 
@@ -206,26 +207,26 @@ Factor‑graph or optimization‑based VIO systems (e.g. sliding‑window bundle
 
 Below is a minimal pseudocode structure you can adapt for EKF‑style IMU–GPS fusion:[web:47][web:50][web:53]
 
+```python
 state = init_state_from_gps_and_imu()
 P = init_covariance()
 
 while running:
-t, imu = read_imu() # high-rate
-dt = t - state.t
-state, F = propagate_state_with_imu(state, imu, dt)
-P = F @ P @ F.T + Q # process noise
+   t, imu = read_imu()  # high-rate
+   dt = t - state.t
+   state, F = propagate_state_with_imu(state, imu, dt)
+   P = F @ P @ F.T + Q  # process noise
 
-text
-if new_gps_available():
-    gps = read_gps()
-    z, R = gps_measurement_and_cov(gps)
-    z_hat, H = predict_gps_measurement(state)
-    y = z - z_hat             # innovation
-    S = H @ P @ H.T + R
-    K = P @ H.T @ np.linalg.inv(S)
-    state.vec = state.vec + K @ y
-    P = (np.eye(len(P)) - K @ H) @ P
-text
+   if new_gps_available():
+      gps = read_gps()
+      z, R = gps_measurement_and_cov(gps)
+      z_hat, H = predict_gps_measurement(state)
+      y = z - z_hat             # innovation
+      S = H @ P @ H.T + R
+      K = P @ H.T @ np.linalg.inv(S)
+      state.vec = state.vec + K @ y
+      P = (np.eye(len(P)) - K @ H) @ P
+```
 
 For complementary filters on microcontrollers, the loop is much simpler: integrate gyro, compute accelerometer‑based tilt, and blend with a tunable \(\alpha\).[web:49][web:57]
 

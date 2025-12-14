@@ -1,41 +1,64 @@
-import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
+import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
-
-/**
- * Creating a sidebar enables you to:
- - create an ordered group of docs
- - render a sidebar for each doc of that group
- - provide next/previous navigation
-
- The sidebars can be generated from the filesystem, or explicitly defined here.
-
- Create as many sidebars as you want.
- */
 const sidebars: SidebarsConfig = {
   tutorialSidebar: [
     'intro',
+
     {
       type: 'category',
       label: 'Foundations',
+      collapsed: false,
       items: [
-        'sensors/intro',
-        'actuators/intro',
-        'computer-vision/intro',
+        {
+          type: 'category',
+          label: 'Sensors',
+          items: [
+            'sensors/intro',
+            'sensors/cameras',
+            'sensors/imu',
+            'sensors/lidar',
+            'sensors/fusion',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Actuators',
+          items: [
+            'actuators/intro',
+            'actuators/motors',
+            'actuators/power-electronics',
+            'actuators/transmissions',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Computer Vision',
+          items: [
+            'computer-vision/intro',
+            'computer-vision/calibration',
+            'computer-vision/deep-learning',
+            'computer-vision/visual-slam',
+            'computer-vision/Three-d-reconstruction',
+          ],
+        },
       ],
     },
+
     {
       type: 'category',
       label: 'Control & Estimation',
+      collapsed: false,
       items: [
-        'control-systems/intro'
+        'control-systems/intro',
       ],
     },
+
     {
       type: 'category',
       label: 'Systems & Integration',
+      collapsed: false,
       items: [
-        'ros/intro'
+        'ros/intro',
       ],
     },
   ],
