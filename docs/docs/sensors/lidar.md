@@ -12,7 +12,7 @@ LIDAR (Light Detection and Ranging) measures distance by emitting laser pulses a
 
 A LIDAR system typically includes a laser source, scanning optics, a photodetector, and timing electronics.[web:97][web:99]
 
-- The sensor emits short laser pulses and measures the round‑trip time to compute distance: \(d \approx c \cdot t / 2\) where \(c\) is the speed of light and \(t\) is time of flight.  
+- The sensor emits short laser pulses and measures the round‑trip time to compute distance: $d \approx c \cdot t / 2$ where $c$ is the speed of light and $t$ is time of flight.  
 - Repeating this over many directions creates a 2D or 3D sampling of the surroundings, often combined with intensity (return strength) data.[web:90][web:97]
 
 Key characteristics:

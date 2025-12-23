@@ -346,8 +346,8 @@ When working with motors in Physical AI systems:
 
 For deeper, implementation-focused topics:
 
-- **[Motor Control](./motor-control.md)** – PWM, H-bridges, ESCs, closed-loop control, and safety.  
-- **[Actuators & Mechanisms](./actuators.md)** – How motors pair with gears, linkages, and transmissions.  
-- **[Control Systems](./control-systems.md)** – PID, state-space methods, and trajectory tracking for motor-driven systems.
+- **[Motor Control](./control)** – PWM, H-bridges, ESCs, closed-loop control, and safety.  
+- **[Transmissions](./transmissions)** – How motors pair with gears, linkages, and transmissions.  
+- **[Control Systems](../control-systems/intro)** – PID, state-space methods, and trajectory tracking for motor-driven systems.
 
 These sections, together with this overview, will help you select and control motors effectively in your Physical AI projects.

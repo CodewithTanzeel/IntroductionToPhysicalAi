@@ -252,8 +252,8 @@ When designing power electronics for a robot:
 
 To build on this introduction:
 
-- **[Motor Control](./motor-control.md)** – How power electronics interfaces with control logic (PWM, H-bridges, ESC signals, closed-loop control).  
-- **[Motors](./motors.md)** – Detailed overview of motor types, selection criteria, and mechanical considerations.  
-- **[Safety and Reliability](./safety.md)** – System-level safety design, fault handling, and standards awareness.
+- **[Motor Control](./control)** – How power electronics interfaces with control logic (PWM, H-bridges, ESC signals, closed-loop control).  
+- **[Motors](./motors)** – Detailed overview of motor types, selection criteria, and mechanical considerations.  
+- **[Control Systems](../control-systems/intro)** – PID, state-space methods, and trajectory tracking for motor-driven systems.
 
 These sections together will help you design power systems that are not only functional, but also robust, maintainable, and safe for Physical AI applications.

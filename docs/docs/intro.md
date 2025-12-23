@@ -54,11 +54,11 @@ This documentation covers the fundamental building blocks of Physical AI:
 
 Ready to dive in? Here's your learning path:
 
-1. **Fundamentals**: Start with [Sensors](/docs/docs/sensors/intro.md) to understand how robots perceive the world
-2. **Actuation**: Learn about [Actuators](/docs/docs/actuators/intro.md) and how to control movement
-3. **Perception**: Explore [Computer Vision](/docs/docs/computer-vision/intro.md) for visual understanding
-4. **Control**: Master [Control Systems](/docs/docs/control-systems/intro.md) for precise manipulation
-5. **Integration**: Build complete systems with [ROS Basics](/docs/docs/ros/intro.md)
+1. **Fundamentals**: Start with [Sensors](./sensors/intro) to understand how robots perceive the world
+2. **Actuation**: Learn about [Actuators](./actuators/intro) and how to control movement
+3. **Perception**: Explore [Computer Vision](./computer-vision/intro) for visual understanding
+4. **Control**: Master [Control Systems](./control-systems/intro) for precise manipulation
+5. **Integration**: Build complete systems with [ROS Basics](./ros/intro)
 
 ## Interactive AI Assistant
 
@@ -84,4 +84,4 @@ Don't worry if you're missing some prerequisites - we'll explain concepts as we 
 
 Physical AI is an exciting field where software meets the physical world. Whether you're building autonomous robots, smart sensors, or intelligent control systems, this documentation will provide the knowledge you need.
 
-Start your journey by exploring the **[Sensors](/docs/docs/sensors/intro.md)** section, or use the AI assistant to ask specific questions!
+Start your journey by exploring the **[Sensors](./sensors/intro)** section, or use the AI assistant to ask specific questions!

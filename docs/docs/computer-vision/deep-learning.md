@@ -97,7 +97,7 @@ Several architectures have become “standard building blocks” for vision task
 
 ResNet introduces **residual connections** (skip connections) that let information and gradients bypass some layers:
 
-- A residual block computes \(y = F(x) + x\), where \(F(x)\) is a few convolutional layers.  
+- A residual block computes $y = F(x) + x$, where $F(x)$ is a few convolutional layers.  
 - This makes training very deep networks (50+ layers) more stable, combating vanishing gradients.
 
 Typical variants:

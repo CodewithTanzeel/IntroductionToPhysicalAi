@@ -157,7 +157,7 @@ Event cameras are neuromorphic sensors that output asynchronous “events” at 
 ### 6.1 Key properties
 
 - Each pixel independently reports changes with microsecond latency and very high dynamic range.[web:27][web:36]  
-- Output is a stream of events \((x, y, t, p)\) where \(p\) is the polarity (brightness increase or decrease).  
+- Output is a stream of events $(x, y, t, p)$ where $p$ is the polarity (brightness increase or decrease).  
 - There is almost no data when the scene is static, and dense data at moving edges.[web:30][web:36]
 
 ### 6.2 Advantages and challenges

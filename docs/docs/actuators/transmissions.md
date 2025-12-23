@@ -223,8 +223,8 @@ When designing transmissions for Physical AI systems:
 
 To connect transmissions with the rest of your system:
 
-- **[Motors](./motors.md)** – How motor characteristics interact with gear ratios and loads.  
-- **[Motor Control](./motor-control.md)** – Electrical control of motors that drive these transmissions.  
-- **[Mechanism Design](./mechanisms.md)** – Linkages, joints, and how transmissions fit into the overall robot structure.
+- **[Motors](./motors)** – How motor characteristics interact with gear ratios and loads.  
+- **[Motor Control](./control)** – Electrical control of motors that drive these transmissions.  
+- **[Power Electronics](./power-electronics)** – Power systems design for your robot.
 
 These topics together will help you design mechanical power trains that match your robot’s performance, precision, and reliability requirements.

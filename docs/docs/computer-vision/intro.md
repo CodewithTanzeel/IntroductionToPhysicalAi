@@ -420,7 +420,7 @@ Explore advanced computer vision topics:
 
 - [Camera Calibration](./calibration) - Correcting lens distortion
 - [Deep Learning for CV](./deep-learning) - CNNs and transfer learning
-- [3D Reconstruction](./3d-reconstruction) - Creating 3D models from images
+- [3D Reconstruction](./Three-d-reconstruction) - Creating 3D models from images
 - [Visual SLAM](./visual-slam) - Simultaneous localization and mapping
 
 Ready to learn how to control these systems? Continue to **[Control Systems](/docs/control-systems/intro)**.

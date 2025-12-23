@@ -261,9 +261,9 @@ Good control is not just about one algorithm; it’s about how modeling, estimat
 
 To dive deeper into control systems for robotics, continue with:
 
-- **[PID Controllers and Tuning](./pid.md)** – Basics and hands-on examples.  
-- **[State Estimation with Kalman Filters](./kalman.md)** – Building reliable state estimates.  
-- **[Model Predictive Control](./mpc.md)** – Constraint-aware control for advanced robots.  
-- **[Trajectory Generation and Tracking](./trajectory-tracking.md)** – From waypoints to smooth motion.
+- **[Motors](../actuators/motors)** – Understanding motor types and selection.  
+- **[Motor Control](../actuators/control)** – PWM, closed-loop control, and safety.  
+- **[Sensor Fusion](../sensors/fusion)** – Combining multiple sensors for state estimation.  
+- **[Visual SLAM](../computer-vision/visual-slam)** – Localization and mapping.
 
 These tutorials will guide you from simple single-loop controllers to full control stacks for mobile robots and manipulators.

@@ -18,28 +18,28 @@ A calibrated camera model is typically split into **intrinsic** and **extrinsic*
 
 Intrinsic parameters describe the camera’s internal geometry and optics:
 
-- **Focal lengths** \(f_x, f_y\): Effective focal length in pixel units along x and y.  
-- **Principal point** \((c_x, c_y)\): The projection of the optical center on the image plane.  
+- **Focal lengths** $f_x, f_y$: Effective focal length in pixel units along x and y.  
+- **Principal point** $(c_x, c_y)$: The projection of the optical center on the image plane.  
 - **Skew**: Shear between x and y axes (usually zero for modern cameras).  
 - **Distortion coefficients**: Parameters describing lens distortion (radial and tangential).
 
 The intrinsic matrix is often written as:
 
-\[
+$
 K =
 \begin{bmatrix}
 f_x & s   & c_x \\
 0   & f_y & c_y \\
 0   & 0   & 1
 \end{bmatrix}
-\]
+$
 
 ### Extrinsic Parameters
 
 Extrinsic parameters describe the **pose of the camera** relative to a world or robot coordinate frame:
 
-- **Rotation** \(R\): 3×3 rotation matrix.  
-- **Translation** \(t\): 3×1 translation vector.
+- **Rotation** $R$: 3×3 rotation matrix.  
+- **Translation** $t$: 3×1 translation vector.
 
 They define how to transform a 3D point from world coordinates into the camera coordinate system.
 
@@ -56,13 +56,13 @@ Radial distortion bends straight lines, especially near image edges:
 - **Barrel distortion**: Lines bulge outward.  
 - **Pincushion distortion**: Lines pinch inward.
 
-A common radial model uses coefficients \(k_1, k_2, k_3\), applied to the normalized radius \(r\).
+A common radial model uses coefficients $k_1, k_2, k_3$, applied to the normalized radius $r$.
 
 ### Tangential Distortion
 
 Tangential distortion occurs if the lens and sensor are not perfectly aligned:
 
-- Modeled with coefficients \(p_1, p_2\).  
+- Modeled with coefficients $p_1, p_2$.  
 - Causes slight shearing and asymmetry in the image.
 
 These coefficients are typically estimated alongside intrinsics during calibration and later used to **undistort** images.
@@ -250,6 +250,6 @@ When calibrating cameras for robotics:
 
 Once your cameras are calibrated:
 
-- Use **[Camera Systems](./cameras.md)** to learn how to build full perception pipelines.  
-- Combine calibration with **[3D Reconstruction](./3d-reconstruction.md)** for mapping and scene modeling.  
-- Integrate camera parameters into **[Sensor Fusion](./fusion.md)** and **[ROS-based](./ros-intro.md)** systems for accurate, multi-sensor robotics.
+- Use **[Deep Learning](./deep-learning)** to learn about CNNs and visual recognition.  
+- Combine calibration with **[3D Reconstruction](./Three-d-reconstruction)** for mapping and scene modeling.  
+- Integrate camera parameters into **[Sensor Fusion](../sensors/fusion)** and **[ROS-based](../ros/intro)** systems for accurate, multi-sensor robotics.
