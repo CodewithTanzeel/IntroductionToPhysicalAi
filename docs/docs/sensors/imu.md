@@ -116,7 +116,7 @@ $$
 \theta(k) = \alpha\,\theta_{\textrm{gyro}}(k) + (1-\alpha)\,\theta_{\textrm{acc}}(k)
 $$
 
-where \(\theta_{\textrm{acc}}\) is computed from accelerometer readings.[web:63][web:67]
+where $\theta_{\textrm{acc}}$ is computed from accelerometer readings.[web:63][web:67]
 
 ### 7.2 Example (Python‑style pseudocode)
 
@@ -154,11 +154,11 @@ Kalman and Extended Kalman Filters (EKF) provide a probabilistic framework for f
 
 A common quaternion‑based EKF state includes:
 
-\[
+$$
 x = [q_w, q_x, q_y, q_z, b_{g_x}, b_{g_y}, b_{g_z}]^\top
-\]
+$$
 
-where \(q\) is orientation and \(b_g\) are gyro biases.[web:64][web:73]
+where $q$ is orientation and $b_g$ are gyro biases.[web:64][web:73]
 
 - **Process model**:  
   - Integrate gyro minus bias to propagate quaternion (discrete quaternion integration).  

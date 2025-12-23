@@ -59,10 +59,10 @@ $$
 \theta(k) = \alpha\,(\theta_{\textrm{gyro}}(k)) + (1-\alpha)\,\theta_{\textrm{acc}}(k)
 $$
 
-where \(\omega\) is gyro rate, \(\theta_{\textrm{acc}}\) is angle from accelerometer, and \(\alpha \in [0,1]\) is a tuning parameter.[web:49][web:57]
+where $\omega$ is gyro rate, $\theta_{\textrm{acc}}$ is angle from accelerometer, and $\alpha \in [0,1]$ is a tuning parameter.[web:49][web:57]
 
-- Larger \(\alpha\): trust gyro more (faster response, more drift).  
-- Smaller \(\alpha\): trust accelerometer more (more stable, more noise and lag).[web:46][web:49]
+- Larger $\alpha$: trust gyro more (faster response, more drift).  
+- Smaller $\alpha$: trust accelerometer more (more stable, more noise and lag).[web:46][web:49]
 
 ### 3.3 When to use
 
@@ -80,33 +80,33 @@ The (linear) Kalman filter is an optimal recursive estimator for linear systems 
 
 State and measurement models:
 
-\[
+$$
 x_k = A x_{k-1} + B u_k + w_k
-\]
+$$
 
-\[
+$$
 z_k = H x_k + v_k
-\]
+$$
 
-- \(x_k\): state at time \(k\)  
-- \(u_k\): control input (e.g. commanded acceleration)  
-- \(z_k\): measurement vector  
-- \(w_k, v_k\): zero‑mean Gaussian process and measurement noise with covariances \(Q, R\).[web:48][web:58]
+- $x_k$: state at time $k$  
+- $u_k$: control input (e.g. commanded acceleration)  
+- $z_k$: measurement vector  
+- $w_k, v_k$: zero‑mean Gaussian process and measurement noise with covariances $Q, R$.[web:48][web:58]
 
 ### 4.2 Predict–update steps
 
 Each iteration:
 
 1. **Prediction**  
-   - Predict state: \(\hat{x}_{k|k-1} = A \hat{x}_{k-1|k-1} + B u_k\)  
-   - Predict covariance: \(P_{k|k-1} = A P_{k-1|k-1} A^\top + Q\)
+   - Predict state: $\hat{x}_{k|k-1} = A \hat{x}_{k-1|k-1} + B u_k$  
+   - Predict covariance: $P_{k|k-1} = A P_{k-1|k-1} A^\top + Q$
 
 2. **Update**  
-   - Innovation: \(y_k = z_k - H \hat{x}_{k|k-1}\)  
-   - Innovation covariance: \(S_k = H P_{k|k-1} H^\top + R\)  
-   - Kalman gain: \(K_k = P_{k|k-1} H^\top S_k^{-1}\)  
-   - Update state: \(\hat{x}_{k|k} = \hat{x}_{k|k-1} + K_k y_k\)  
-   - Update covariance: \(P_{k|k} = (I - K_k H)P_{k|k-1}\)[web:41][web:48]
+   - Innovation: $y_k = z_k - H \hat{x}_{k|k-1}$  
+   - Innovation covariance: $S_k = H P_{k|k-1} H^\top + R$  
+   - Kalman gain: $K_k = P_{k|k-1} H^\top S_k^{-1}$  
+   - Update state: $\hat{x}_{k|k} = \hat{x}_{k|k-1} + K_k y_k$  
+   - Update covariance: $P_{k|k} = (I - K_k H)P_{k|k-1}$[web:41][web:48]
 
 ### 4.3 Use cases
 
@@ -121,44 +121,44 @@ Most robot systems are nonlinear (orientation on SO(3), GPS in geodetic coordina
 
 ### 5.1 Nonlinear models
 
-\[
+$$
 x_k = f(x_{k-1}, u_k) + w_k
-\]
+$$
 
-\[
+$$
 z_k = h(x_k) + v_k
-\]
+$$
 
-- \(f(\cdot)\): nonlinear process model derived from motion equations.  
-- \(h(\cdot)\): nonlinear measurement model (e.g. GPS converting world pose to lat‑lon, camera projecting 3D points to pixels).[web:48][web:58]
+- $f(\cdot)$: nonlinear process model derived from motion equations.  
+- $h(\cdot)$: nonlinear measurement model (e.g. GPS converting world pose to lat‑lon, camera projecting 3D points to pixels).[web:48][web:58]
 
-EKF replaces matrices \(A\) and \(H\) with Jacobians of \(f\) and \(h\) evaluated at the current estimate.[web:42][web:48]
+EKF replaces matrices $A$ and $H$ with Jacobians of $f$ and $h$ evaluated at the current estimate.[web:42][web:48]
 
 ### 5.2 EKF steps
 
 1. **Prediction**  
-   - \(\hat{x}_{k|k-1} = f(\hat{x}_{k-1|k-1}, u_k)\)  
-   - \(F_k = \frac{\partial f}{\partial x}\big|_{\hat{x}_{k-1|k-1},u_k}\)  
-   - \(P_{k|k-1} = F_k P_{k-1|k-1} F_k^\top + Q\)
+   - $\hat{x}_{k|k-1} = f(\hat{x}_{k-1|k-1}, u_k)$  
+   - $F_k = \frac{\partial f}{\partial x}\big|_{\hat{x}_{k-1|k-1},u_k}$  
+   - $P_{k|k-1} = F_k P_{k-1|k-1} F_k^\top + Q$
 
 2. **Update**  
-   - \(\hat{z}_k = h(\hat{x}_{k|k-1})\)  
-   - \(H_k = \frac{\partial h}{\partial x}\big|_{\hat{x}_{k|k-1}}\)  
-   - Innovation: \(y_k = z_k - \hat{z}_k\)  
-   - \(S_k = H_k P_{k|k-1} H_k^\top + R\)  
-   - \(K_k = P_{k|k-1} H_k^\top S_k^{-1}\)  
-   - \(\hat{x}_{k|k} = \hat{x}_{k|k-1} + K_k y_k\)  
-   - \(P_{k|k} = (I - K_k H_k) P_{k|k-1}\)[web:42][web:58]
+   - $\hat{z}_k = h(\hat{x}_{k|k-1})$  
+   - $H_k = \frac{\partial h}{\partial x}\big|_{\hat{x}_{k|k-1}}$  
+   - Innovation: $y_k = z_k - \hat{z}_k$  
+   - $S_k = H_k P_{k|k-1} H_k^\top + R$  
+   - $K_k = P_{k|k-1} H_k^\top S_k^{-1}$  
+   - $\hat{x}_{k|k} = \hat{x}_{k|k-1} + K_k y_k$  
+   - $P_{k|k} = (I - K_k H_k) P_{k|k-1}$[web:42][web:58]
 
 ### 5.3 Typical state for mobile robots
 
 A common EKF localization state:
 
-\[
+$$
 x = [p_x, p_y, p_z, v_x, v_y, v_z, q_w, q_x, q_y, q_z, b_{g_x}, b_{g_y}, b_{g_z}, b_{a_x}, b_{a_y}, b_{a_z}]^\top
-\]
+$$
 
-where \(p\) is position, \(v\) velocity, \(q\) orientation quaternion, and \(b_g, b_a\) gyro and accelerometer biases.[web:58][web:54]
+where $p$ is position, $v$ velocity, $q$ orientation quaternion, and $b_g, b_a$ gyro and accelerometer biases.[web:58][web:54]
 
 ---
 
@@ -180,7 +180,7 @@ IMU–GPS fusion is classic: IMU gives high‑frequency relative motion; GPS pro
 
 - Convert GPS data to a local Cartesian frame (e.g. ENU) before fusion.  
 - Model GPS outages by skipping measurement updates and inflating covariance.  
-- Tune \(Q\) (IMU noise/bias) and \(R\) (GPS noise) carefully to avoid over‑ or under‑trusting either source.[web:42][web:58]
+- Tune $Q$ (IMU noise/bias) and $R$ (GPS noise) carefully to avoid over‑ or under‑trusting either source.[web:42][web:58]
 
 ---
 
@@ -196,7 +196,7 @@ IMU–vision fusion is the core of visual‑inertial odometry (VIO) and many mod
 ### 7.2 Filter‑based VIO
 
 - **State**: pose, velocity, IMU biases, and sometimes landmark positions.  
-- **Measurements**: 2D feature positions in images; projection of 3D landmarks is modeled in \(h(\cdot)\).  
+- **Measurements**: 2D feature positions in images; projection of 3D landmarks is modeled in $h(\cdot)$.  
 - EKF updates run when new frames arrive; IMU integration runs between frames as prediction.[web:48][web:54]
 
 Factor‑graph or optimization‑based VIO systems (e.g. sliding‑window bundle adjustment) extend this idea with batch optimization but follow the same probabilistic principles.[web:54]
@@ -228,7 +228,7 @@ while running:
       P = (np.eye(len(P)) - K @ H) @ P
 ```
 
-For complementary filters on microcontrollers, the loop is much simpler: integrate gyro, compute accelerometer‑based tilt, and blend with a tunable \(\alpha\).[web:49][web:57]
+For complementary filters on microcontrollers, the loop is much simpler: integrate gyro, compute accelerometer‑based tilt, and blend with a tunable $\alpha$.[web:49][web:57]
 
 ---
 
