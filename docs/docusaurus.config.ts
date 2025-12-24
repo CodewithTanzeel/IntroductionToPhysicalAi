@@ -11,6 +11,11 @@ const config: Config = {
   tagline: 'Learn the fundamentals of Physical AI - Sensors, Actuators, Robotics, and Intelligent Systems',
   favicon: 'img/favicon.ico',
 
+  // Custom fields for RAG API configuration
+  customFields: {
+    ragApiUrl: process.env.RAG_API_URL || 'http://localhost:3001',
+  },
+
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4

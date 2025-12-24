@@ -11,10 +11,14 @@ const __dirname = path.dirname(__filename);
 // Initialize Gemini AI
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-// Initialize Qdrant client
-const qdrantClient = new QdrantClient({
+// Initialize Qdrant client (supports both local and cloud)
+const qdrantConfig = {
     url: process.env.QDRANT_URL || 'http://localhost:6333'
-});
+};
+if (process.env.QDRANT_API_KEY) {
+    qdrantConfig.apiKey = process.env.QDRANT_API_KEY;
+}
+const qdrantClient = new QdrantClient(qdrantConfig);
 
 const COLLECTION_NAME = process.env.COLLECTION_NAME || 'physical_ai_docs';
 const DOCS_PATH = path.join(__dirname, '../../docs/docs');
