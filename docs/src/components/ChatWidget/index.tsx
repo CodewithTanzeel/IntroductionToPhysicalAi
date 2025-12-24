@@ -124,8 +124,7 @@ export default function ChatWidget(): React.JSX.Element {
             <div className={styles.headerContent}>
               <span className={styles.headerIcon}>🤖</span>
               <div>
-                <h3 className={styles.headerTitle}>Physical AI Assistant</h3>
-                <p className={styles.headerSubtitle}>Powered by Gemini</p>
+                <h3 className={styles.headerTitle}>Physical AI Knowlege Assistant</h3>
               </div>
             </div>
             <button
