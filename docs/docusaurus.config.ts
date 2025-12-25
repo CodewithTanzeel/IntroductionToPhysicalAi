@@ -12,6 +12,7 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   // Custom fields for RAG API configuration
+  // Set RAG_API_URL environment variable in Vercel to your Render backend URL
   customFields: {
     ragApiUrl: process.env.RAG_API_URL || 'http://localhost:3001',
   },
@@ -22,8 +23,8 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  // Use localhost for local development. For GitHub Pages change this before deploy.
-  url: 'http://localhost:3000',
+  // This will be your Vercel deployment URL
+  url: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For local development keep this as '/'
   baseUrl: '/',
