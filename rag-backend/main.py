@@ -26,10 +26,59 @@ client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 # Load documentation at startup - store as dict for better search
 docs_dict = {}
 
+# Embedded documentation for when docs folder is not available
+EMBEDDED_DOCS = {
+    "intro.md": """# Introduction to Physical AI
+
+Physical AI represents the intersection of artificial intelligence with the physical world through robotics and autonomous systems. This documentation covers:
+
+- **Sensors**: Cameras, LiDAR, IMU, and sensor fusion techniques
+- **Actuators**: Motors, power electronics, control systems, and transmissions  
+- **Computer Vision**: Calibration, 3D reconstruction, visual SLAM, and deep learning
+- **Control Systems**: PID control, motion planning, and feedback systems
+- **ROS**: Robot Operating System fundamentals
+""",
+    "sensors/intro.md": """# Sensors Overview
+
+Sensors are the eyes and ears of robotic systems. They gather information about the environment.
+
+Key sensor types:
+- **Cameras**: RGB and depth cameras for visual perception
+- **LiDAR**: Light Detection and Ranging for 3D mapping
+- **IMU**: Inertial Measurement Units for orientation and acceleration
+- **Sensor Fusion**: Combining multiple sensors for robust perception
+""",
+    "actuators/intro.md": """# Actuators Overview
+
+Actuators convert electrical energy into physical motion. Key topics include:
+
+- **Motors**: DC motors, servo motors, stepper motors
+- **Power Electronics**: Motor drivers, H-bridges, PWM control
+- **Transmissions**: Gears, belts, and mechanical systems
+- **Control**: Position, velocity, and torque control
+""",
+}
+
 def load_docs():
     """Load all markdown files from docs folder"""
     global docs_dict
-    docs_path = Path(__file__).parent.parent / "docs" / "docs"
+    # Try multiple possible paths for docs
+    possible_paths = [
+        Path(__file__).parent.parent / "docs" / "docs",  # Local dev
+        Path(__file__).parent / "docs",  # Docker/Koyeb: docs copied to backend
+        Path("/app/docs"),  # Docker container path
+    ]
+    
+    docs_path = None
+    for path in possible_paths:
+        if path.exists():
+            docs_path = path
+            break
+    
+    if not docs_path:
+        print("⚠️ Docs folder not found. Using embedded docs.")
+        docs_dict.update(EMBEDDED_DOCS)
+        return
     
     for md_file in docs_path.rglob("*.md"):
         try:
@@ -161,4 +210,5 @@ Give a clear, helpful answer based on the documentation above."""
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=3001)
+    port = int(os.getenv("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)

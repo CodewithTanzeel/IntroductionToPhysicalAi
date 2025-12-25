@@ -1,26 +1,38 @@
 # Introduction to Physical AI - Documentation with RAG Chatbot
 
-A comprehensive documentation website for Physical AI topics built with Docusaurus, featuring an AI-powered chatbot using RAG (Retrieval-Augmented Generation) with Gemini API and Qdrant vector database.
+A comprehensive documentation website for Physical AI topics built with Docusaurus, featuring an AI-powered chatbot using RAG (Retrieval-Augmented Generation) with Groq LLM.
 
 ## 🚀 Features
 
 - **📚 Comprehensive Documentation**: Covers sensors, actuators, computer vision, control systems, and ROS
-- **🤖 AI Chatbot**: Interactive AI assistant powered by Google Gemini API
+- **🤖 AI Chatbot**: Interactive AI assistant powered by Groq LLM
 - **🔍 RAG Architecture**: Retrieval-Augmented Generation for accurate, context-aware answers
 - **🎨 Modern UI**: Beautiful Docusaurus interface with custom chat widget
-- **⚡ Fast Search**: Vector similarity search using Qdrant
 - **🌙 Dark Mode**: Full dark mode support
 - **📱 Responsive**: Works on desktop, tablet, and mobile
+
+## 🌐 Deployment
+
+**Deploy to cloud for free!**
+- **Frontend**: Vercel (Docusaurus site)
+- **Backend**: Koyeb (FastAPI server)
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions.
+
+### Quick Deploy
+
+1. **Backend (Koyeb)**: Push to GitHub → Create App → Select Docker → Point to `rag-backend/Dockerfile`
+2. **Frontend (Vercel)**: Import repo → Set root directory to `docs`
+3. **Connect**: Add `RAG_API_URL` env var in Vercel pointing to Koyeb URL
 
 ## 📋 Prerequisites
 
 Before you begin, ensure you have the following installed:
 
-- **Node.js** (v18.0 or higher) - [Download](https://nodejs.org/)
-- **npm** or **yarn** - Comes with Node.js
-- **Docker Desktop** - [Download](https://www.docker.com/products/docker-desktop)
+- **Node.js** (v20.0 or higher) - [Download](https://nodejs.org/)
+- **Python** (3.11+) - [Download](https://python.org/)
 - **Git** - [Download](https://git-scm.com/)
-- **Google AI API Key** - [Get one here](https://aistudio.google.com/app/apikey)
+- **Groq API Key** - [Get one here](https://console.groq.com/keys)
 
 ## 🛠️ Installation
 
