@@ -10,9 +10,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code
 COPY rag-backend/main.py .
 
-# Copy docs folder if available (optional - backend has embedded fallback)
-COPY docs/ ./docs/ || true
-
 # Expose port
 EXPOSE 8000
 
